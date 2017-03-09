@@ -6,7 +6,8 @@
       v-on:dragleave="fileDragLeave"
       v-on:dragover="fileDragover"
       v-on:drop="fileDropped"
-      v-on:contextmenu="rightClick">
+      v-on:contextmenu="rightClick"
+      v-if="!isTbinfo">
     <div
         class="file-row"
         v-if="!isRoot"
@@ -43,7 +44,55 @@
       </template>
     </ul>
   </div>
+  <div
+    class="file sidebar-tbinfo"
+    v-bind:class="{'selected': selected}"
+    v-on:click="fileClicked"
+    v-on:mousedown="mouseDown"
+    v-else>
+    <img class="sidebar-tbinfo-image" src="../../static/img/default-app-icon.png">
+    <p class="sidebar-tbinfo-title">
+      <span class="sidebar-tbinfo-appname">Lorem Ipsum</span><br>
+      <span class="sidebar-tbinfo-author">Solor Dit Amet</span>
+    </p>
+  </div>
 </template>
+
+<style>
+  .sidebar-tbinfo{
+    position: absolute;
+    top: -70px;
+    height: 45px;
+    width: calc(100% - 20px );
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  .sidebar-tbinfo.selected {
+    background-color: #5A5A5A;
+  }
+
+  .sidebar-tbinfo-image{
+    width: 45px;
+    height: 45px;
+    margin-right: 10px;
+    background-color: rgba(255,255,255,0.3);
+  }
+
+  .sidebar-tbinfo-appname{
+    color: #FFFFFF;
+  }
+
+  .sidebar-tbinfo-author{
+    color: rgba(255,255,255,0.3);
+  }
+
+  .sidebar-tbinfo-title{
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+</style>
 
 <script>
   import {TingappFolder} from '../tingapp.js';
@@ -70,7 +119,7 @@
         event.stopPropagation();
       },
       fileClicked: function(event) {
-        if (this.parentWasFocusedOnMouseDown && this.selected) {
+        if (this.parentWasFocusedOnMouseDown && this.selected && !this.isTbinfo ) {
           this.editingFilename = true;
         } else {
           if (this.isFolder) {
@@ -317,6 +366,9 @@
       isRoot: function () {
         return this.file.isRootFolder;
       },
+      isTbinfo: function () {
+          return this.file.name === 'app.tbinfo';
+      }
     }
   };
 </script>

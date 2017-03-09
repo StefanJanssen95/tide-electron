@@ -24,6 +24,7 @@
     right: 0;
     top: 0;
     bottom: 26px;
+    padding-top: 70px;
     overflow: auto;
   }
   .sidebar-button-bar {
