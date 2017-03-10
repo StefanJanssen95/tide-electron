@@ -77,15 +77,16 @@
     width: 45px;
     height: 45px;
     margin-right: 10px;
-    background-color: rgba(255,255,255,0.3);
   }
 
   .sidebar-tbinfo-appname{
     color: #FFFFFF;
+    font-size: 11px;
   }
 
   .sidebar-tbinfo-author{
-    color: rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.4);
+    font-size: 10px;
   }
 
   .sidebar-tbinfo-title{
