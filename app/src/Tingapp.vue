@@ -9,7 +9,7 @@
     </sidebar>
 
     <vertical-split class="main" :position="1" :min-position="1" :max-position="(windowHeight - 80) * 0.9">
-        <editor slot="top" class="fill">
+        <editor slot="top" >
         </editor>
         <terminal slot="bottom" class="fill" :process="process">
         </terminal>

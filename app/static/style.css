@@ -85,6 +85,10 @@ option {
   box-sizing: border-box;
 }
 
+.clickable{
+  cursor: pointer;
+}
+
 /**
  * Control bar
  * */
